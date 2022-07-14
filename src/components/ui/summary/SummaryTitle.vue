@@ -1,0 +1,76 @@
+<template>
+  <div class="title--thumbnails">
+    <h2>
+      {{ str1 }}<span>{{ str2 }}</span
+      >{{ str3 }}
+    </h2>
+    <section class="date">
+      <h5>{{ formatDate(startDate) }}</h5>
+      <h5 v-if="this.endDate && this.endDate !== this.startDate">
+        - <span style="margin-left: 1vw">{{ formatDate(endDate) }}</span>
+      </h5>
+    </section>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "SummaryTitle",
+  props: ["title", "startDate", "endDate"],
+  data() {
+    return {
+      str1: "",
+      str2: "",
+      str3: "",
+    };
+  },
+  methods: {
+    formatTitle() {
+      const title = this.title;
+
+      const start = Math.trunc(title.length / 2) - 3;
+      const end = Math.trunc(title.length / 2) + 4;
+      const last = title.length - end;
+
+      this.str1 = title.length < 6 ? "" : title.slice(0, start);
+      this.str2 = title.length < 6 ? title : title.slice(start, end);
+      this.str3 = last > 0 ? title.slice(-last) : "";
+    },
+    formatDate(date) {
+      return new Intl.DateTimeFormat("en-GB", {
+        dateStyle: "medium",
+      }).format(new Date(date));
+    },
+  },
+  mounted() {
+    this.formatTitle();
+  },
+};
+</script>
+<style scoped>
+.title--thumbnails {
+  flex-basis: 100%;
+  margin-bottom: 0vh;
+}
+.title--thumbnails h2 {
+  margin-left: 20vw;
+  margin-top: 5vh;
+  margin-bottom: 7vh;
+  color: var(--black);
+  font-size: 2.7vw;
+}
+
+.title--thumbnails h2 span {
+  padding-bottom: 2vh;
+  border-bottom: 5px solid var(--primary300);
+}
+.date {
+  margin-left: 5vw;
+  display: flex;
+}
+.title--thumbnails h5 {
+  font-size: 1.2vw;
+  color: grey;
+  margin-left: 1vw;
+}
+</style>
