@@ -1,15 +1,7 @@
 <template>
   <div>
     <navbar-vue
-      :links="[
-        'sales',
-        'Add',
-        'thisweek',
-        'thismonth',
-        'choose',
-        'Graph',
-        'home',
-      ]"
+      :links="['sales', 'Add', 'thisweek', 'thismonth', 'choose', 'Graph']"
     ></navbar-vue>
     <sales-summary :period="this.days"></sales-summary>
   </div>
@@ -48,8 +40,7 @@ export default {
     //set Start date
     setStartDate() {
       const milliseconds = this.days * TOMILLISECS;
-      this.startDate =
-        new Date(new Date().setHours(0, 0, 0, 0)).getTime() - milliseconds;
+      this.startDate = new Date(new Date().setHours(0, 0, 0, 0)).getTime() - milliseconds;
     },
   },
 };

@@ -7,26 +7,38 @@
         >
       </li>
     </ul>
+    <dropdown-vue class="dropdown" :items="['home', 'sales', 'produce', 'feeds']"
+      >Go to</dropdown-vue
+    >
   </nav>
 </template>
 <script>
+import DropdownVue from "./DropdownVue.vue";
 export default {
   name: "NavbarVue",
+  components: {
+    DropdownVue,
+  },
   props: {
     links: Array,
   },
 };
 </script>
 <style scoped>
+.dropdown {
+  margin-top: -1vh;
+  margin-left: -1.5vw;
+}
 .nav {
-  width: 100vw;
+  width: 85vw;
   height: 6vh;
   display: flex;
   margin-top: 1vh;
   justify-content: flex-end;
+  margin-right: 15vw;
 }
 .nav ul {
-  margin-right: 10vw;
+  margin-right: 1vw;
   margin-top: 1.5vh;
 }
 .nav ul li {

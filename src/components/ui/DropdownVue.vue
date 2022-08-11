@@ -1,8 +1,8 @@
 <template>
   <div class="dropdown">
     <button @click="toggleDropdown" class="dropdown-btn">
-      <slot class="slot"></slot>
-      <span @click="toggleDropdown"
+      <slot></slot>
+      <span @click="toggleDropdown" class="btn-span"
         ><font-awesome-icon
           @click="toggleDropdown"
           class="icon-btn"
@@ -11,14 +11,21 @@
       /></span>
     </button>
     <div class="dropdown-content">
-      <router-link
-        class="router-link"
-        v-for="link in links"
-        :to="{ name: 'MonthFeeds', params: { month: link } }"
-        :key="link"
-      >
-        {{ link }}
-      </router-link>
+      <div v-if="links">
+        <router-link
+          class="link"
+          v-for="link in links"
+          :to="{ name: 'MonthFeeds', params: { data: index } }"
+          :key="link"
+        >
+          {{ link.charAt(0).toUpperCase() + link.slice(1) }}
+        </router-link>
+      </div>
+      <div v-if="items">
+        <router-link class="link" v-for="item in items" :to="item" :key="item">
+          {{ item.charAt(0).toUpperCase() + item.slice(1) }}
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -28,29 +35,37 @@ export default {
   name: "DropDown",
   components: {},
   data() {
-    return {};
+    return {
+      count: -1,
+    };
+  },
+  computed: {
+    index() {
+      return this.addCount();
+    },
   },
   props: {
     links: Array,
+    items: Array,
   },
   methods: {
     toggleDropdown(e) {
       e.preventDefault();
 
-      document
-        .querySelector(".dropdown-content")
-        .classList.toggle("show-dropdown");
+      document.querySelector(".dropdown-content").classList.toggle("show-dropdown");
     },
     hideDropdown() {
-      document
-        .querySelector(".dropdown-content")
-        .classList.contains("show-dropdown") &&
-        document
-          .querySelector(".dropdown-content")
-          .classList.toggle("show-dropdown");
+      document.querySelector(".dropdown-content").classList.contains("show-dropdown") &&
+        document.querySelector(".dropdown-content").classList.toggle("show-dropdown");
+    },
+    addCount() {
+      this.count = this.count++;
+      console.log(this.count);
+      return this.count;
     },
   },
   mounted() {},
+  updated() {},
 };
 </script>
 
@@ -60,22 +75,21 @@ export default {
   position: relative;
 }
 .dropdown-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   height: 5vh;
   width: 6vw;
   font-size: 1rem;
   margin-right: -2vw;
-  margin-top: 0.7vh;
+  margin-top: 1.2vh;
   background-color: transparent;
   /* background-color: red; */
   color: var(--black);
-  padding: 1vw;
-  padding-bottom: 5vh;
+  /* padding-bottom: 5vh; */
   border-radius: 0vw;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+    Arial, sans-serif;
 }
 .dropdown .dropdown-btn:hover,
 .icon-btn:hover {
@@ -84,7 +98,7 @@ export default {
   cursor: pointer;
 }
 .icon-btn {
-  margin-left: 0.3vw;
+  margin-left: 0.5vw;
   margin-top: 0.55vh;
 }
 
@@ -102,17 +116,17 @@ export default {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-.router-link {
+.link {
   display: block;
   padding: 12px 16px;
   font-size: 1rem;
   background-color: none;
   text-decoration: none;
   color: var(--dark-grey);
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+    Arial, sans-serif;
 }
-.router-link:hover {
+.link:hover {
   background-color: #ddd;
 }
 ::-webkit-scrollbar {

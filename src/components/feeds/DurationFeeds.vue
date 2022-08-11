@@ -2,11 +2,7 @@
   <div>
     <div class="menu">
       <dropdown-vue class="dropdown" :links="this.months">Month</dropdown-vue>
-      <navbar-vue
-        :links="['today', 'customperiod', 'add', 'home']"
-        class="navbar"
-      >
-      </navbar-vue>
+      <navbar-vue :links="['today', 'customperiod', 'add']" class="navbar"> </navbar-vue>
     </div>
     <FeedsSummary :period="this.days" class="summary"></FeedsSummary>
   </div>
@@ -52,8 +48,7 @@ export default {
     //set Start date
     setStartDate() {
       const milliseconds = this.days * TOMILLISECS;
-      this.startDate =
-        new Date(new Date().setHours(0, 0, 0, 0)).getTime() - milliseconds;
+      this.startDate = new Date(new Date().setHours(0, 0, 0, 0)).getTime() - milliseconds;
     },
   },
   mounted() {
@@ -72,6 +67,6 @@ export default {
 /* .dropdown {
   /* margin-right: -3vw; */
 .navbar {
-  flex-basis: 10%;
+  flex-basis: 15%;
 }
 </style>

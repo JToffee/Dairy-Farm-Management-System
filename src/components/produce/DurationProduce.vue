@@ -1,16 +1,6 @@
 <template>
   <div>
-    <navbar-vue
-      :links="[
-        'new',
-        'today',
-        'week',
-        'month',
-        'customperiod',
-        'home',
-        'sales',
-      ]"
-    ></navbar-vue>
+    <navbar-vue :links="['new', 'today', 'week', 'month', 'customperiod']"></navbar-vue>
     <prod-summary
       v-if="this.startDate && this.endDate"
       :period="this.days"
@@ -52,8 +42,7 @@ export default {
     //set Start date
     setStartDate() {
       const milliseconds = this.days * TOMILLISECS;
-      this.startDate =
-        new Date(new Date().setHours(0, 0, 0, 0)).getTime() - milliseconds;
+      this.startDate = new Date(new Date().setHours(0, 0, 0, 0)).getTime() - milliseconds;
     },
   },
   mounted() {},

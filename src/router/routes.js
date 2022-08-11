@@ -117,7 +117,7 @@ export const routes = [
     component: InputFeed,
   },
   {
-    path: "/feeds/:month",
+    path: "/feeds/:data",
     name: "MonthFeeds",
     component: DurationFeeds,
     props: true,
