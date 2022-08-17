@@ -91,10 +91,12 @@
         cows: this.$store.state.cows,
         data: [],
         cowProduce: "",
-        days: this.period,
       };
     },
     computed: {
+      days() {
+        return this.period;
+      },
       startDate() {
         return this.$store.state.produce.startDate;
       },
@@ -141,15 +143,14 @@
     updated() {
       this.allProduce = this.$store.state.produce.produce;
       this.cows = this.$store.state.cows;
-      this.days = this.period;
+    },
+    mounted() {
+      this.allProduce = this.$store.state.produce.produce;
+      this.cows = this.$store.state.cows;
     },
     methods: {
       //set Start date
       setStartDate() {
-        // const milliseconds = this.days * TOMILLISECS;
-        // this.startDate =
-        // 	new Date(new Date().setHours(0, 0, 0, 0)).getTime() - milliseconds;
-
         return new Date(new Date().setHours(0, 0, 0, 0)).getTime();
       },
 
@@ -157,15 +158,12 @@
       durationData(data) {
         this.data = data || this.allProduce;
 
-        // if (!this.startDate) this.startDate = this.setStartDate();
-        // if (!this.endDate) this.endDate = new Date().getTime();
-        const newData =
+        return (
           this.data &&
           this.data.filter(
             (item) => item.date <= this.endDate && item.date >= this.startDate
-          );
-
-        return newData;
+          )
+        );
       },
       //PRODUCE
 
@@ -174,7 +172,7 @@
         return (
           data &&
           data.filter(
-            (item) => item.time === time && item.date <= endDate && item.date >= startDate
+            (item) => item.time === time && item.date >= startDate && item.date <= endDate
           )
         );
       },
@@ -187,8 +185,6 @@
       durationTimeData(time = null, data) {
         let timeValue = time;
         this.data = data || this.allProduce;
-        // if (!this.startDate) this.startDate = this.setStartDate();
-        // if (!this.endDate) this.endDate = new Date().getTime();
 
         const newData = this.getDurationTimeData(
           timeValue,

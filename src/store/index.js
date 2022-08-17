@@ -5,6 +5,7 @@ import { cows } from "../data/cows.js";
 import { sales } from "../data/sales.js";
 import Sale from "../models/sale.js";
 import { feeds } from "@/data/feeds.js";
+import Feed from "@/models/Feed.js";
 
 export default createStore({
   state: {
@@ -54,12 +55,38 @@ export default createStore({
     addProduce(state, formData) {
       const { date, time, selectCow, quantity } = { ...formData };
       console.log(new Produce(selectCow, time, +quantity, date));
+      console.log(new Date(date));
       state.produce.produce.push(new Produce(selectCow, time, +quantity, date));
     },
     addSale(state, formData) {
       const { date, category, quantity } = { ...formData };
       console.log(new Produce(category, +quantity, date));
       state.sales.sales.push(new Sale(category, +quantity, date));
+    },
+    addFeed(state, formData) {
+      const { date, feedType, unitName, packagingSize, quantity, unitprice } = {
+        ...formData,
+      };
+      console.log(
+        new Feed(
+          date,
+          feedType,
+          unitName,
+          +packagingSize,
+          +quantity,
+          +unitprice
+        )
+      );
+      state.feeds.feeds.push(
+        new Feed(
+          date,
+          feedType,
+          unitName,
+          +packagingSize,
+          +quantity,
+          +unitprice
+        )
+      );
     },
   },
   actions: {
@@ -78,6 +105,9 @@ export default createStore({
     },
     addSale({ commit }, formData) {
       commit("addSale", formData);
+    },
+    addFeed({ commit }, formData) {
+      commit("addFeed", formData);
     },
   },
   modules: {},

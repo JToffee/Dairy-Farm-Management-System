@@ -73,7 +73,7 @@
     methods: {
       addProduce(e) {
         e.preventDefault();
-        console.log(e.target);
+
         const dataArray = [...new FormData(e.target)];
         const data = Object.fromEntries(dataArray);
 

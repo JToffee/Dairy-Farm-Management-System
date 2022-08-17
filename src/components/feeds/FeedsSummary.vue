@@ -21,7 +21,7 @@
             <td>{{ feed.totalQty }} {{ feed.qty.unitName }}</td>
             <td>{{ feed.totalCost }}</td>
             <td>
-              {{ feed.totalCost / feed.totalQty }}
+              {{ feed.totalCost / feed.totalQty.toFixed(2) }}
             </td>
             <td>{{ this.difference(feed.name) }}</td>
           </tr>

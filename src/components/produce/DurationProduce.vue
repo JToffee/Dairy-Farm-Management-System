@@ -19,7 +19,7 @@
   export default {
     name: "DurationProduce",
     components: { ProdSummary, NavbarVue },
-    props: ["duration"],
+    props: { duration: Number },
     data() {
       return {
         startDate: null,

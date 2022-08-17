@@ -81,11 +81,15 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-top: 5vh;
+    margin-top: 4vh;
   }
   /* .dropdown {
   /* margin-right: -3vw; */
   .navbar {
     flex-basis: 30%;
+  }
+  .dropdown {
+    margin-top: 0;
+    margin-right: -2.2vw;
   }
 </style>

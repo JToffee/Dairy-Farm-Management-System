@@ -66,7 +66,8 @@
     justify-content: flex-end;
   }
   .dropdown {
-    margin-top: -1vh;
+    margin-top: -0.6vh;
+    margin-right: -0.2vw;
   }
   .navbar {
     flex-basis: 27%;

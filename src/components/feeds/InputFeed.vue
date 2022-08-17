@@ -9,56 +9,64 @@
       ></navbar-vue>
     </div>
     <div id="forms-input">
-      <form id="input-form" @submit="addProduce">
+      <form id="input-form" @submit="addFeed">
         <h2>In<span>put fee</span>d</h2>
         <div class="form-group">
           <label for="date">Date</label>
           <input type="date" name="date" id="date" placeholder="" v-model="dateValue" />
         </div>
         <div class="form-group">
-          <label for="unitName">Unit Name</label>
+          <label for="feedType">Feed type</label>
+          <select id="feedType" name="feedType" required>
+            <option value="Caliandra">Caliandra</option>
+            <option value="Yeast">Yeast</option>
+          </select>
+          <!-- <input type="text" name="feedName" placeholder="Wheat" required /> -->
+        </div>
+        <div class="form-group">
+          <label for="unitName">Unit name</label>
           <select id="unitName" name="unitName" required>
             <option value="KG">KG</option>
             <option value="LITRE">LITRE</option>
-            <option value="Gram">Gram</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="time">Unit Size </label>
-          <input type="number" name="unitSize" steps="0.01" placeholder="5" required />
+          <label for="packagingSize">Packaging size </label>
+          <input
+            type="number"
+            name="packagingSize"
+            steps="0.01"
+            placeholder="5"
+            v-model="size"
+            required
+          />
         </div>
-        <div class="form-group">
-          <label for="selcetCow">Cow </label>
-          <select name="selectCow" id="selectCow" required>
-            <option v-for="cow in cows" :key="cow.id" :value="cow.id">
-              {{ cow.name }}
-            </option>
-          </select>
-        </div>
+
         <div class="form-group">
           <label for="quantity">Quantity</label>
           <input
             type="number"
             id="quantity"
             name="quantity"
-            steps="0.01"
+            steps="0"
             placeholder="5"
             required
             v-model="qty"
           />
         </div>
         <div class="form-group">
-          <label for="quantity">Unit Price</label>
+          <label for="unitprice">Unit Price</label>
           <input
             type="number"
-            id="price"
-            name="price"
+            id="unitprice"
+            name="unitprice"
             steps="0.01"
             placeholder="300"
+            v-model="price"
             required
           />
         </div>
-        <div class="form-group">
+        <div class="form-group" style="flex-basis: 100%">
           <button type="submit">Submit</button>
         </div>
       </form>
@@ -75,12 +83,6 @@
     name: "ProdInput",
     components: { NavbarVue, DropdownVue },
     computed: {
-      cows() {
-        return this.$store.getters.getCows;
-      },
-      hour() {
-        return this.$store.getters.getHour;
-      },
       months() {
         return allMonths();
       },
@@ -88,24 +90,24 @@
     data() {
       return {
         qty: "",
+        price: "",
+        size: "",
         dateValue: new Date().toISOString().substring(0, 10),
       };
     },
     methods: {
-      addProduce(e) {
+      addFeed(e) {
         e.preventDefault();
-        console.log(e.target);
+
         const dataArray = [...new FormData(e.target)];
         const data = Object.fromEntries(dataArray);
 
-        this.$store.dispatch("addProduce", data);
+        this.$store.dispatch("addFeed", data);
         this.qty = "";
-        this.dateValue = new Date().toISOString().substring(0, 10);
+        this.price = "";
+        this.size = "";
+        this.this.dateValue = new Date().toISOString().substring(0, 10);
       },
-    },
-
-    mounted() {
-      this.$store.dispatch("setTime");
     },
   };
 </script>
@@ -206,5 +208,8 @@
     /* margin-right: -3vw; */
   .navbar {
     flex-basis: 30%;
+  }
+  .dropdown {
+    margin-right: -2vw;
   }
 </style>
