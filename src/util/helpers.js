@@ -37,3 +37,35 @@ export const allMonths = () => {
   }
   return months;
 };
+
+//Sum Feeds quantity
+export const sumFeedsQty = (data) => {
+  let total;
+
+  data &&
+    data.reduce((acc, item) => {
+      if (item.totalQty) {
+        total = item.totalQty + acc;
+      }
+
+      return total;
+    }, 0);
+  if (!total) total = 0;
+  return total;
+};
+
+//Sum Feeds Cost
+export const sumFeedsCost = (data) => {
+  let total;
+
+  data &&
+    data.reduce((acc, item) => {
+      if (item.totalCost) {
+        total = item.totalCost + acc;
+      }
+
+      return total;
+    }, 0);
+  if (!total) total = 0;
+  return total;
+};

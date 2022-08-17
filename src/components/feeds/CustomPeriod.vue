@@ -1,32 +1,35 @@
 <template>
   <div>
-    <navbar-vue
-      section="sales"
-      :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
-    ></navbar-vue>
+    <div class="menu">
+      <dropdown-vue class="dropdown" :links="this.months">Month</dropdown-vue>
+      <navbar-vue
+        section="feeds"
+        :links="['new', 'today', 'choose period']"
+        class="navbar"
+      >
+      </navbar-vue>
+    </div>
     <div class="results">
       <duration-form
-        style="margin-left: 20vw"
         @submitHandler="search"
         @updateClicked="updateClicked"
         class="form"
       ></duration-form>
-      <sales-summary
-        class="sales"
-        v-if="clicked && this.startDate && this.endDate"
-      ></sales-summary>
+      <feeds-summary v-if="clicked && this.startDate && this.endDate" />
     </div>
   </div>
 </template>
 
 <script>
-  import NavbarVue from "../ui/NavbarVue.vue";
-  import SalesSummary from "./SalesSummary.vue";
+  import FeedsSummary from "./FeedsSummary.vue";
   import DurationForm from "../ui/DurationForm.vue";
+  import NavbarVue from "../ui/NavbarVue.vue";
+  import { allMonths } from "../../util/helpers.js";
+  import DropdownVue from "../ui/DropdownVue.vue";
 
   export default {
-    name: "SalesPeriod",
-    components: { SalesSummary, NavbarVue, DurationForm },
+    name: "FeedsPeriod",
+    components: { FeedsSummary, DurationForm, NavbarVue, DropdownVue },
     data() {
       return {
         startDate: this.$store.state.produce.startDate,
@@ -34,7 +37,11 @@
         clicked: false,
       };
     },
-    computed: {},
+    computed: {
+      months() {
+        return allMonths();
+      },
+    },
     methods: {
       search() {
         this.clicked = true;
@@ -49,16 +56,25 @@
 
       // this.clicked = this.$store.state.produce.clicked;
     },
-    mounted() {
-      console.log(this.startDate, this.endDate, this.clicked);
-    },
   };
 </script>
 
 <style scoped>
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .dropdown {
+    margin-top: -1vh;
+  }
+  .navbar {
+    flex-basis: 27%;
+  }
   .form {
-    margin: 6vh 10vw;
     width: 60vw;
+    margin-left: 14vw;
+    margin-top: 7vh;
   }
   .sales {
     width: 80vw;
@@ -67,7 +83,9 @@
   .results {
     padding-top: 2vh;
     background-color: white;
-    margin-top: 7vh;
+    margin: auto;
+    margin-top: 12vh;
+    width: 90vw;
     min-height: 90vh;
   }
 </style>

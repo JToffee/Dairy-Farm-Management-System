@@ -1,15 +1,8 @@
 <template>
   <div class="custom-period">
     <navbar-vue
-      :links="[
-        'new',
-        'today',
-        'week',
-        'month',
-        'customperiod',
-        'home',
-        'sales',
-      ]"
+      section="produce"
+      :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
     ></navbar-vue>
     <div class="results">
       <duration-form
@@ -18,57 +11,55 @@
         class="search"
       ></duration-form>
 
-      <ProdSummary
-        v-if="clicked && this.startDate && this.endDate"
-      ></ProdSummary>
+      <ProdSummary v-if="clicked && this.startDate && this.endDate"></ProdSummary>
     </div>
   </div>
 </template>
 
 <script>
-import ProdSummary from "./ProdSummary.vue";
-import NavbarVue from "../ui/NavbarVue.vue";
-import DurationForm from "../ui/DurationForm.vue";
+  import ProdSummary from "./ProdSummary.vue";
+  import NavbarVue from "../ui/NavbarVue.vue";
+  import DurationForm from "../ui/DurationForm.vue";
 
-export default {
-  components: { ProdSummary, NavbarVue, DurationForm },
-  data() {
-    return {
-      startDate: this.$store.state.produce.startDate,
-      endDate: this.$store.state.produce.endDate,
-      clicked: false,
-    };
-  },
-  computed: {},
-  methods: {
-    search() {
-      this.clicked = true;
+  export default {
+    components: { ProdSummary, NavbarVue, DurationForm },
+    data() {
+      return {
+        startDate: this.$store.state.produce.startDate,
+        endDate: this.$store.state.produce.endDate,
+        clicked: false,
+      };
     },
-    updateClicked() {
-      this.clicked = false;
+    computed: {},
+    methods: {
+      search() {
+        this.clicked = true;
+      },
+      updateClicked() {
+        this.clicked = false;
+      },
     },
-  },
-  updated() {
-    this.startDate = this.$store.state.produce.startDate;
-    this.endDate = this.$store.state.produce.endDate;
-    // this.clicked = this.$store.state.produce.clicked;
-  },
-  mounted() {
-    console.log(this.startDate, this.endDate, this.clicked);
-  },
-};
+    updated() {
+      this.startDate = this.$store.state.produce.startDate;
+      this.endDate = this.$store.state.produce.endDate;
+      // this.clicked = this.$store.state.produce.clicked;
+    },
+    mounted() {
+      console.log(this.startDate, this.endDate, this.clicked);
+    },
+  };
 </script>
 
 <style scoped>
-.produce-summary {
-  margin-top: 20vh;
-}
-.custom-period {
-  width: 100%;
-  height: 100%;
-}
-.results {
-  min-height: 90vh;
-  margin-top: 10vh;
-}
+  .produce-summary {
+    margin-top: 20vh;
+  }
+  .custom-period {
+    width: 100%;
+    height: 100%;
+  }
+  .results {
+    min-height: 90vh;
+    margin-top: 10vh;
+  }
 </style>

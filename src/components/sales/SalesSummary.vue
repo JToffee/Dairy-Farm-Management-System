@@ -54,7 +54,7 @@
     <div class="row">
       <table>
         <th class="category-th">Category</th>
-        <th>Milk Quantity</th>
+        <th>Milk Qty(Litres)</th>
         <th>Amount</th>
         <th>Difference</th>
         <tbody>

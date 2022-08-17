@@ -7,6 +7,7 @@ import SalesPeriod from "../components/sales/CustomPeriod.vue";
 import InputSale from "../components/sales/InputSale.vue";
 import DurationFeeds from "../components/feeds/DurationFeeds.vue";
 import InputFeed from "../components/feeds/InputFeed.vue";
+import FeedsPeriod from "../components/feeds/CustomPeriod.vue";
 
 export const routes = [
   //HOMEPAGE
@@ -15,56 +16,65 @@ export const routes = [
     path: "/",
     name: "Home",
     component: HomePage,
-    props: { route: "home" },
+    alias: "/home",
   },
   {
     path: "/home",
     name: "home",
     component: HomePage,
-    props: { route: "home" },
   },
   {
-    path: "/produce",
-    name: "produce",
-    component: DurationProduce,
-    props: { duration: 0 },
+    path: "/:any/home",
+    redirect: "/home",
   },
 
   //PRODUCE
+
   {
-    path: "/home",
-    name: "home",
-    component: HomePage,
-    props: { route: "home" },
+    path: "/produce",
+    component: DurationProduce,
+    name: "produce",
+    props: { duration: 0 },
   },
   {
-    path: "/new",
-    name: "InputProduce",
+    path: "/produce",
+    component: DurationProduce,
+    alias: "/today",
+    props: { duration: 0 },
+  },
+  {
+    path: "/produce/new",
+    name: "producenew",
     component: ProdInput,
-    props: { route: "new produce" },
   },
+
   {
-    path: "/today",
-    name: "today",
+    path: "/produce/today",
+    name: "producetoday",
     component: DurationProduce,
     props: { duration: 0 },
   },
   {
-    path: "/week",
-    name: "week",
+    path: "/produce/pastweek",
     component: DurationProduce,
+    name: "producepastweek",
     props: { duration: 7 },
+    alias: "/week",
   },
   {
-    path: "/month",
-    name: "month",
+    path: "/produce/pastmonth",
     component: DurationProduce,
+    name: "producepastmonth",
     props: { duration: 30 },
   },
   {
-    path: "/customperiod",
-    name: "customperiod",
+    path: "/produce/chooseperiod",
     component: CustomPeriod,
+    name: "producechooseperiod",
+  },
+  {
+    path: "/:any/produce",
+    redirect: "/produce",
   },
 
   //SALES
@@ -73,38 +83,52 @@ export const routes = [
     path: "/sales",
     name: "sales",
     component: DurationSales,
-    props: { route: "sales", duration: 0 },
+    props: { duration: 0 },
   },
   {
-    path: "/add",
-    name: "InputSale",
+    path: "/sales/new",
+    name: "salesnew",
     component: InputSale,
   },
   {
-    path: "/salestoday",
-    name: "todaySales",
+    path: "/sales/today",
+    name: "salestoday",
     component: DurationSales,
     props: { duration: 0 },
   },
   {
-    path: "/thisweek",
-    name: "weekProduce",
+    path: "/sales/pastweek",
+    name: "salespastweek",
     component: DurationSales,
     props: { duration: 7 },
   },
   {
-    path: "/thismonth",
-    name: "thismonth",
+    path: "/sales/pastmonth",
+    name: "salespastmonth",
     component: DurationSales,
     props: { duration: 30 },
   },
   {
-    path: "/choose",
-    name: "choose",
+    path: "/sales/chooseperiod",
+    name: "saleschooseperiod",
     component: SalesPeriod,
   },
 
+  {
+    path: "/sales",
+    name: "sales",
+    component: DurationSales,
+    props: { route: "sales", duration: 0 },
+  },
+  {
+    path: "/:any/sales",
+    redirect: "/sales",
+  },
   //FEEDS
+  {
+    path: "/:any/feeds",
+    redirect: "/feeds",
+  },
 
   {
     path: "/feeds",
@@ -112,16 +136,28 @@ export const routes = [
     component: DurationFeeds,
   },
   {
-    path: "/feeds/add",
-    name: "feedsinp",
+    path: "/feeds/new",
+    name: "feedsnew",
     component: InputFeed,
   },
   {
-    path: "/feeds/:data",
+    path: "/feeds/today",
+    name: "feedstoday",
+    component: DurationFeeds,
+  },
+
+  {
+    path: "/feeds/month",
     name: "MonthFeeds",
     component: DurationFeeds,
-    props: true,
+    props:true,
   },
+  {
+    path: "/feeds/chooseperiod",
+    name: "feedschooseperiod",
+    component: FeedsPeriod,
+  },
+];
 
   // {
   // 	path: "/about",
@@ -131,4 +167,4 @@ export const routes = [
   // 	// which is lazy-loaded when the route is visited.
   // 	component: About,
   // },
-];
+

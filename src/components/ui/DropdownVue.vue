@@ -14,8 +14,8 @@
       <div v-if="links">
         <router-link
           class="link"
-          v-for="link in links"
-          :to="{ name: 'MonthFeeds', params: { data: index } }"
+          v-for="(link, index) in links"
+          :to="{ name: 'MonthFeeds', params: { index: index, month: link } }"
           :key="link"
         >
           {{ link.charAt(0).toUpperCase() + link.slice(1) }}
@@ -35,14 +35,7 @@ export default {
   name: "DropDown",
   components: {},
   data() {
-    return {
-      count: -1,
-    };
-  },
-  computed: {
-    index() {
-      return this.addCount();
-    },
+    return {};
   },
   props: {
     links: Array,
@@ -57,11 +50,6 @@ export default {
     hideDropdown() {
       document.querySelector(".dropdown-content").classList.contains("show-dropdown") &&
         document.querySelector(".dropdown-content").classList.toggle("show-dropdown");
-    },
-    addCount() {
-      this.count = this.count++;
-      console.log(this.count);
-      return this.count;
     },
   },
   mounted() {},
@@ -111,6 +99,7 @@ export default {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   max-height: 30vh;
+  height: 20vh;
   overflow-y: scroll;
 }
 .dropdown:hover .dropdown-content {
