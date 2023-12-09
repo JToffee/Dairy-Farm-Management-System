@@ -2,7 +2,9 @@
 
 ## Site link
 ```
-kaporia-dairies-co.netlify.app
+
+https://kaporia-dairies-co.netlify.app
+
 ```
 
 ## Project setup
