@@ -37,8 +37,8 @@
     padding: 0.2vw 2vw 0.2vw 2vw;
   }
   .banner-content p {
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
-      Arial, sans-serif;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
     margin-left: 20vw;
     font-style: italic;
     margin-top: 0vh;

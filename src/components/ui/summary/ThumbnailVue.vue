@@ -27,7 +27,7 @@
     padding: 1vw;
     height: 30vh;
     color: var(--white);
-    /* -webkit-box-shadow: 1px 1px 25px 1px #c1c8ce; */
+    /* -webkit-box-shadow: 1px 1px 25px 1px  var(--shadow-grey); */
     border-radius: 1vw;
     box-shadow: inset;
     color: black;

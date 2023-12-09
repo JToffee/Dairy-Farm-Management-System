@@ -83,7 +83,7 @@
 
     background-color: none;
   }
-  .nav ul li :hover {
+  .nav ul li a:hover {
     color: var(--accent400);
     font-weight: bold;
 
@@ -97,7 +97,8 @@
   .router-link-active {
     /* background: var(--accent400); */
     /* color: var(--accent400); */
-    color: var(--primary400);
+    color: var(--accent400);
+    font-weight: bold;
   }
 
   .nav .sticky {

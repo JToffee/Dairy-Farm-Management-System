@@ -41,12 +41,15 @@
     --accent200: #b6594c;
     --accent300: #db3f4c;
     --accent400: #e74a2ed3;
+    --accent100: #f88570d3;
     --black: black;
     --white: #ffffff;
     --dark-grey: #464541;
     --mid-grey: #8a8585;
     --light-grey: #f5f0f0;
     --lightSteelBlue: #b0c4de;
+    --borderGrey: #d4d0d0;
+    --shadow-grey: #c1c8ce;
   }
 
   html {

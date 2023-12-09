@@ -36,7 +36,8 @@
 
 <style scoped>
   .background {
-    background-image: url("../assets/images/farm.jpg");
+    /* background-image: url("../assets/images/farm.jpg"); */
+    background-color: var(--primary700);
     background-size: cover;
     background-position: center;
   }
@@ -46,7 +47,7 @@
     height: fit-content;
     padding-top: 1vw;
     padding-bottom: 0;
-    background-color: var(--black);
+    /* background-color: var(--black); */
     opacity: 0.9;
 
     /* background: 50%-transparent; */
@@ -69,7 +70,7 @@
   }
   .router-link {
     text-decoration: none;
-    color: var(--mid-grey);
+    color: var(--light-grey);
     font-size: 1rem;
     padding: 1vw 1vw;
     border-radius: 0vw;
@@ -77,7 +78,8 @@
     background-color: none;
   }
   .nav ul li :hover {
-    color: var(--accent400);
+    color: var(--accent100);
+    font-weight: bold;
     /* color: var(--white); */
   }
   /* .nav ul li :active {

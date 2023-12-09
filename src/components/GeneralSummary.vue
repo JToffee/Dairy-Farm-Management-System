@@ -16,7 +16,6 @@
       :value="sales"
       unit="KSH"
       :difference="salesDiff()"
-      class="thumbnail--active"
       valueClass="thumbnail--active value-thumbnail"
     ></thumbnail-vue>
     <thumbnail-vue
@@ -46,19 +45,23 @@
     data() {
       return {
         today: new Date(new Date().setHours(0, 0, 0, 0)).getTime(),
-        yesterday: new Date(new Date().setHours(0, 0, 0, 0)).getTime() - 1 * TOMILLISECS,
+        yesterday:
+          new Date(new Date().setHours(0, 0, 0, 0)).getTime() - 1 * TOMILLISECS,
         allProduce: this.$store.state.produce.produce,
         allSales: this.$store.state.sales.sales,
       };
     },
     computed: {
       produce() {
-        return Intl.NumberFormat("en-GB").format(sum(this.todayData(this.allProduce)));
+        return Intl.NumberFormat("en-GB").format(
+          sum(this.todayData(this.allProduce))
+        );
       },
 
       sales() {
         const data =
-          sumSale(this.todayData(this.allSales)) - sumSale(this.unsold(this.today));
+          sumSale(this.todayData(this.allSales)) -
+          sumSale(this.unsold(this.today));
 
         return Intl.NumberFormat("en-GB").format(data);
       },
@@ -78,7 +81,8 @@
 
         const difference = +currData - prevData;
 
-        if (difference > 0) return "+ " + Intl.NumberFormat("en-GB").format(difference);
+        if (difference > 0)
+          return "+ " + Intl.NumberFormat("en-GB").format(difference);
         if (difference < 0)
           return "- " + Intl.NumberFormat("en-GB").format(Math.abs(difference));
 
@@ -100,14 +104,16 @@
       },
       salesDiff() {
         const prevData =
-          sumSale(this.allSales.filter((item) => item.date === this.yesterday)) -
-          sumSale(this.unsold(this.yesterday));
+          sumSale(
+            this.allSales.filter((item) => item.date === this.yesterday)
+          ) - sumSale(this.unsold(this.yesterday));
 
         const currData = this.sales.toString().replace(/,/g, "");
 
         const difference = +currData - prevData;
 
-        if (difference > 0) return "+ " + Intl.NumberFormat("en-GB").format(difference);
+        if (difference > 0)
+          return "+ " + Intl.NumberFormat("en-GB").format(difference);
         if (difference < 0)
           return "- " + Intl.NumberFormat("en-GB").format(Math.abs(difference));
 
@@ -118,15 +124,20 @@
 </script>
 <style scoped>
   .thumbnail {
-    background-color: var(--dark-grey);
-    border: solid 0.2px var(--color-background);
+    background-color: var(--light-grey);
+    border: solid 0.2px var(--primary200);
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     /* box-shadow: -4px -3px 45px 5px rgba(0, 0, 0, 0.35); */
-    -webkit-box-shadow: 10px 11px 15px 3px #c1c8ce;
+    -webkit-box-shadow: 2px 5px 10px 1px var(--shadow-grey);
     border-radius: 1vw;
     box-shadow: inset;
     height: 38vh;
     padding-top: 5vh;
+
+    /* margin-right: 0; */
+  }
+  .value-thumbnail {
+    color: var(--primary300);
   }
   .thumbnail--active {
     color: #fff;
