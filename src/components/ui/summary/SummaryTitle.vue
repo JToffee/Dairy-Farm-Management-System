@@ -68,7 +68,7 @@
 
   .title--thumbnails h2 span {
     padding-bottom: 2vh;
-    border-bottom: 5px solid var(--primary300);
+    border-bottom: 5px solid var(--primary500);
   }
   .date {
     margin-left: 5vw;

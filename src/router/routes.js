@@ -8,6 +8,7 @@ import InputSale from "../components/sales/InputSale.vue";
 import DurationFeeds from "../components/feeds/DurationFeeds.vue";
 import InputFeed from "../components/feeds/InputFeed.vue";
 import FeedsPeriod from "../components/feeds/CustomPeriod.vue";
+import DurationExpenses from "../components/expenses/DurationExpenses.vue";
 
 export const routes = [
   //HOMEPAGE
@@ -150,12 +151,19 @@ export const routes = [
     path: "/feeds/month",
     name: "MonthFeeds",
     component: DurationFeeds,
-    props:true,
+    props: true,
   },
   {
     path: "/feeds/chooseperiod",
     name: "feedschooseperiod",
     component: FeedsPeriod,
+  },
+
+  //EXPENSES
+  {
+    path: "/expenses",
+    name: "expenses",
+    component: DurationExpenses,
   },
 ];
 

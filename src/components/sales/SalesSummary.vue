@@ -100,6 +100,7 @@
             <td>{{ totalAmount }}</td>
             <td>{{ amountDiff }}</td>
           </tr>
+          <tr></tr>
           <tr class="net">
             <td class="category">Net total</td>
             <td>{{ netMilk }}</td>
@@ -394,7 +395,7 @@
     text-align: center;
     height: 2vh;
     padding: 1vw;
-    color: #e6d9d9;
+    color: var(--color-background);
     background-color: var(--mid-grey);
 
     font-size: 1.3rem;
@@ -407,13 +408,8 @@
     padding: 2vh;
     /* background-color: var(--primary600); */
   }
-  tbody tr:nth-child(odd) {
-    background-color: var(--primary200);
-  }
-  .net {
-    background-color: var(--primary500);
-    font-weight: bold;
-    color: var(--color-background);
+  tbody tr:nth-child(even) {
+    background-color: var(--lightSteelBlue);
   }
   .category {
     font-weight: bold;
@@ -424,5 +420,15 @@
   .category-th {
     text-align: left;
     text-indent: 2vw;
+  }
+  tbody .net {
+    background-color: var(--primary700);
+    font-weight: bold;
+  }
+  .net .category {
+    color: var(--color-background);
+  }
+  .net td {
+    color: var(--color-background);
   }
 </style>

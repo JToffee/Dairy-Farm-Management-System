@@ -13,7 +13,9 @@
         >
       </li>
     </ul>
-    <dropdown-vue class="dropdown" :items="['home', 'sales', 'produce', 'feeds']"
+    <dropdown-vue
+      class="dropdown"
+      :items="['home', 'sales', 'produce', 'feeds', 'expenses']"
       >Go to</dropdown-vue
     >
   </nav>

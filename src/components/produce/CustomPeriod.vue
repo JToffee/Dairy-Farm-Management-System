@@ -11,7 +11,9 @@
         class="search"
       ></duration-form>
 
-      <ProdSummary v-if="clicked && this.startDate && this.endDate"></ProdSummary>
+      <ProdSummary
+        v-if="clicked && this.startDate && this.endDate"
+      ></ProdSummary>
     </div>
   </div>
 </template>

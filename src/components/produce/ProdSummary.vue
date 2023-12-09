@@ -36,6 +36,7 @@
       </div>
     </div>
     <div class="per-cow">
+      <h2>Pr<span>oduce by c</span>ow</h2>
       <div class="btn-container">
         <button class="btn-produce" @click="cowBtnHandler" id="allproduce">
           All Cows
@@ -300,33 +301,57 @@
     font-size: 1.5vw;
   }
   .thumbnail {
-    background-color: var(--primary700);
+    background-color: var(--lightSteelBlue);
   }
   .thumbnail--active {
     color: #fff;
-    background-color: var(--accent400);
+    background-color: var(--accent200);
   }
   .per-cow {
     display: flex;
+    width: 80vw;
     flex-wrap: wrap;
-    max-width: 80vw;
-    margin: 10vh 15vw;
+    overflow: hidden;
+    margin: auto;
+    overflow-x: hidden;
+    padding-bottom: 10vh;
+    margin-top: 3vw;
+    background-color: var(--white);
+    border: 0.1px solid rgb(233, 229, 229);
+  }
+  .per-cow h2 {
+    flex-basis: 100%;
+    margin-bottom: 7vh;
+    margin-left: 20vw;
+    color: var(--black);
+    font-size: 2.7vw;
+  }
+  .per-cow h2 span {
+    padding-bottom: 2vh;
+    border-bottom: 5px solid var(--primary500);
+  }
+  .btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: left;
+    padding-left: 5vw;
+    margin-top: 3vh;
   }
   .btn-produce {
     margin: 1vw;
     width: fit-content;
     min-width: 5vw;
-    background-color: #d9e3eb;
+    background-color: transparent;
     font-size: 1rem;
-    color: #464541;
+    color: #000;
   }
   .btn-active {
     /* background-color: var(--accent300); */
-    color: var(--black);
-    padding: 0.5vw;
-    background-color: #ddd;
-    border-bottom: solid 1px var(--primary300);
-    border-radius: 1vw;
+    padding: 0;
+    /* color: var(--accent400); */
+    font-weight: bold;
+    /* border-bottom: solid 1px var(--accent400); */
+    border-radius: 0;
   }
   .today-input {
     margin-top: 1vw;
@@ -342,9 +367,10 @@
     text-align: left;
   }
   .cow-produce td {
-    background-color: var(--primary700);
-    color: #d8dde0;
+    background-color: var(--lightSteelBlue);
+    color: var(--black);
     text-indent: 2vw;
+    font-weight: 600;
   }
   .cow-produce th {
     color: #737b7c;
