@@ -1,20 +1,17 @@
 <template>
   <div class="container">
-    <div class="background">
-      <header class="header">
-        <nav class="nav">
-          <ul>
-            <li v-for="link in links" :key="link">
-              <router-link class="router-link" :to="link">
-                {{ link.charAt(0).toUpperCase() + link.slice(1) }}</router-link
-              >
-            </li>
-          </ul>
-        </nav>
-
-        <banner-vue></banner-vue>
-      </header>
-    </div>
+    <header class="header">
+      <banner-vue></banner-vue>
+      <nav class="nav">
+        <ul>
+          <li v-for="link in links" :key="link">
+            <router-link class="router-link" :to="link">
+              {{ link.charAt(0).toUpperCase() + link.slice(1) }}</router-link
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
     <GeneralSummary class="summary"></GeneralSummary>
   </div>
 </template>
@@ -37,18 +34,21 @@
 <style scoped>
   .background {
     /* background-image: url("../assets/images/farm.jpg"); */
-    background-color: var(--primary700);
     background-size: cover;
     background-position: center;
   }
 
   .header {
     width: 100vw;
-    height: fit-content;
+    height: 40vh;
     padding-top: 1vw;
     padding-bottom: 0;
+    background-color: var(--primary700);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    display: flex;
     /* background-color: var(--black); */
-    opacity: 0.9;
 
     /* background: 50%-transparent; */
   }

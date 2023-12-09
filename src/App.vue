@@ -65,6 +65,7 @@
   body {
     background-color: var(--color-background);
     scroll-behavior: smooth;
+    margin: 0;
   }
 
   .container {
