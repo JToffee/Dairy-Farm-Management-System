@@ -1,7 +1,7 @@
 <template>
   <div class="thumbnails-container today-input">
     <summary-title
-      title="Summary"
+      title="Sales Summary"
       :startDate="startDate"
       :endDate="endDate"
     ></summary-title>

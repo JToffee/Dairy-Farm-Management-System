@@ -34,8 +34,8 @@
       formatTitle() {
         const title = this.title;
 
-        const start = Math.trunc(title.length / 2) - 3;
-        const end = Math.trunc(title.length / 2) + 4;
+        const start = Math.trunc(title.length / 2) - 4;
+        const end = Math.trunc(title.length / 2) + 5;
         const last = title.length - end;
 
         this.str1 = title.length < 6 ? "" : title.slice(0, start);

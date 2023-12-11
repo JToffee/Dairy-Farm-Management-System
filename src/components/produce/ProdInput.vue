@@ -9,13 +9,7 @@
         <h2>In<span>put produ</span>ce</h2>
         <div class="form-group">
           <label for="date">Date</label>
-          <input
-            type="date"
-            name="date"
-            id="date"
-            placeholder=""
-            v-model="dateValue"
-          />
+          <input type="date" name="date" id="date" placeholder="" v-model="dateValue" />
         </div>
         <div class="form-group">
           <label for="time">Milking time</label>

@@ -1,7 +1,7 @@
 <template>
   <div class="thumbnails-container today-input">
     <summary-title
-      title="Summary"
+      title="Feeds Summary"
       :startDate="this.startDate"
       :endDate="this.endDate"
     ></summary-title>
@@ -278,5 +278,9 @@
   .category-th {
     text-align: left;
     text-indent: 2vw;
+  }
+  .net td {
+    color: #e9dede;
+    font-weight: 600;
   }
 </style>

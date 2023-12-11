@@ -25,7 +25,7 @@
     components: { GeneralSummary, BannerVue },
     data() {
       return {
-        links: ["Feeds", "Produce", "Sales", "Expenses"],
+        links: ["Produce", "Sales", "Feeds", "Expenses"],
       };
     },
   };

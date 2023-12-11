@@ -3,7 +3,7 @@
     <div class="produce-summary" v-if="this.startDate && this.endDate">
       <div class="thumbnails-container today-input">
         <summary-title
-          title="Summary"
+          title="Produce Summary"
           :startDate="startDate"
           :endDate="endDate"
         ></summary-title>

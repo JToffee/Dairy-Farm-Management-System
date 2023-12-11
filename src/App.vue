@@ -58,8 +58,8 @@
   #app {
     background-color: var(--color-background);
     scroll-behavior: smooth;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+      Arial, sans-serif;
     overflow-x: hidden;
   }
   body {
@@ -100,6 +100,9 @@
     color: var(--dark-grey);
   }
   /* FORMS */
+  form {
+    border: 1px solid var(--light-grey);
+  }
 
   .form h2 {
     margin-bottom: 8vh;
@@ -187,31 +190,4 @@
   .remove-footer {
     display: none;
   }
-
-  /* .results {
-	background-color: #092841;
-	height: 20vw;
-	flex-basis: 100%;
-} */
-  /*
-.form-group {
-	padding: 2vw;
-	min-height: 5vh;
-	flex-basis: 100%;
-	margin-left: 10vw;
-}
-.form-group label {
-	color: #d8dde0;
-	padding: 1vw;
-	float: left;
-	margin-top: -1vh;
-	width: 17vw;
-	font-size: 1.3rem;
-}
-.form-group input {
-	height: 5vh;
-	width: 12vw;
-	font-size: 1.2rem;
-	text-indent: 1vw;
-} */
 </style>
