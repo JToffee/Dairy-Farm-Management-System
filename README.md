@@ -3,7 +3,7 @@
 ## Site link
 ```
 
-https://kaporia-dairies-co.netlify.app
+https://kaporia-dairies.netlify.app/
 
 ```
 
