@@ -1,69 +1,98 @@
 <template>
   <div>
-    <div class="produce-summary">
-      <div class="thumbnails-container today-input">
-        <summary-title
-          title="Summary"
-          :startDate="startDate"
-          :endDate="endDate"
-        ></summary-title>
-        <thumbnail-vue
-          title="Morning"
-          :value="morning"
-          unit="KG"
-          :difference="morningDifference"
-        ></thumbnail-vue>
-        <thumbnail-vue
-          title="Noon"
-          :value="noon"
-          unit="KG"
-          :difference="noonDifference"
-          valueClass="thumbnail--active .value-thumbnail"
-        ></thumbnail-vue>
-        <thumbnail-vue
-          title="Evening"
-          :value="evening"
-          unit="KG"
-          :difference="eveningDifference"
-        ></thumbnail-vue>
-        <thumbnail-vue
-          title="Total"
-          :value="total"
-          unit="KG"
-          :difference="totalDifference"
-          class="thumbnail--active"
-        ></thumbnail-vue>
+    <div class="expenses-summary">
+      <summary-title-vue
+        title="Expenses Summary"
+        :startDate="startDate"
+        :endDate="endDate"
+      ></summary-title-vue>
+      <div class="tabs-container">
+        <tabbed-summary-vue
+          title="Feeds"
+          value="9000"
+          unit="KES"
+          difference="-3000"
+        ></tabbed-summary-vue>
+        <tabbed-summary-vue
+          title="Farm operations"
+          value="9000"
+          unit="KES"
+          difference="-3000"
+        ></tabbed-summary-vue>
+        <tabbed-summary-vue
+          title="Machine maintenance"
+          value="9000"
+          unit="KES"
+          difference="-3000"
+        ></tabbed-summary-vue>
+        <tabbed-summary-vue
+          title="Fuel"
+          value="9000"
+          unit="KES"
+          difference="-3000"
+        ></tabbed-summary-vue>
+        <tabbed-summary-vue
+          title="Payroll"
+          value="9000"
+          unit="KES"
+          difference="-3000"
+        ></tabbed-summary-vue>
+        <tabbed-summary-vue
+          title="Vet Services"
+          value="9000"
+          unit="KES"
+          difference="-3000"
+        ></tabbed-summary-vue>
+        <tabbed-summary-vue
+          title="Transport"
+          value="9000"
+          unit="KES"
+          difference="-3000"
+        ></tabbed-summary-vue>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import ThumbnailVue from "../ui/summary/ThumbnailVue.vue";
+  import SummaryTitleVue from "../ui/summary/SummaryTitle.vue";
+  import TabbedSummaryVue from "../ui/summary/TabbedSummary.vue";
 
   export default {
     name: "ExpenseSummary",
-    components: { ThumbnailVue },
+    components: { SummaryTitleVue, TabbedSummaryVue },
+    props: { period: Number },
+    computed: {
+      days() {
+        return this.period;
+      },
+      startDate() {
+        return this.$store.state.produce.startDate;
+      },
+      endDate() {
+        return this.$store.state.produce.endDate;
+      },
+    },
   };
 </script>
 
 <style>
-  .produce-summary {
+  .expenses-summary {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
     margin-top: 3vw;
   }
-  .value-thumbnail {
-    /* border: 1px solid #092841; */
-    /* background-color: var(--color-bcg-7); */
-    background-color: var(--primary500);
-    width: fit-content;
-    padding: 1vw;
-    font-size: 1.5vw;
-  }
-  .thumbnail {
-    background-color: var(--primary700);
-  }
-  .thumbnail--active {
-    color: #fff;
-    background-color: var(--accent400);
+  .tabs-container {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-around;
+    border: 1px solid var(--light-grey);
+    background-color: var(--white);
+    padding: 40px;
   }
 </style>

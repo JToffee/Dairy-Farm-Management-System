@@ -1,9 +1,11 @@
 <template>
   <div>
-    <navbar-vue
-      section="produce"
-      :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
-    ></navbar-vue>
+    <div class="menu">
+      <navbar-vue
+        section="produce"
+        :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
+      ></navbar-vue>
+    </div>
     <div class="forms-input">
       <form @submit="addProduce">
         <h2>In<span>put produ</span>ce</h2>
@@ -51,7 +53,7 @@
 </template>
 
 <script>
-  import NavbarVue from "../ui/NavbarVue.vue";
+  import NavbarVue from "../ui/Navbar.vue";
 
   export default {
     name: "ProdInput",
@@ -129,14 +131,4 @@
     font-size: 1rem;
     margin-left: 30%;
   }
-
-  /* form #input-form {
-	display: flex;
-	flex-wrap: wrap;
-	/* background-color: #1f9bb1; */
-  /* width: 70vw;
-	min-height: 50vh;
-	margin: auto;
-	margin-top: 10vh;
-} */
 </style>

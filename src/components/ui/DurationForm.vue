@@ -8,11 +8,9 @@
       <label for="endDate">End date</label>
       <input type="date" v-model="endDate" @change="changeHandler" required />
     </div>
-    <div class="form-group">
-      <button type="submit" @click="submitHandler" class="btn">
-        <img src="../../assets/icons/search.png" class="icon" />
-      </button>
-    </div>
+    <button type="submit" @click="submitHandler" class="btn">
+      <img src="../../assets/icons/search.png" class="icon" />
+    </button>
   </form>
 </template>
 
@@ -50,19 +48,20 @@
   };
 </script>
 
-<style>
+<style scoped>
   .search {
-    width: 60%;
+    width: 80%;
     display: flex;
     /* align-items: center; */
-    justify-content: center;
+    justify-content: flex-start;
     margin: auto;
     margin-top: 10vh;
-    padding-bottom: 1.5vh;
     height: 10vh;
     border-bottom: var(--light-grey) solid 0.5px;
-    margin-bottom: 5vh;
-    background-color: transparent;
+    margin-bottom: 3vh;
+    padding: 30px;
+    padding-top: 20px;
+    background-color: var(--color-background);
   }
   .search input {
     padding: 1vh 1vw;
@@ -81,7 +80,7 @@
     margin-left: 2vw;
     padding: 0;
     justify-content: center;
-    flex-basis: 30%;
+    max-width: 30%;
   }
   .search label {
     width: fit-content;
@@ -92,9 +91,9 @@
     font-weight: 400;
   }
   .search .btn {
-    margin-left: -7vw;
     width: 2vw;
-    background-color: transparent;
+    background: transparent;
+    margin-left: 1vw;
   }
   .btn img {
     width: 1.2vw;

@@ -1,9 +1,11 @@
 <template>
   <div>
-    <navbar-vue
-      section="sales"
-      :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
-    ></navbar-vue>
+    <div class="menu">
+      <navbar-vue
+        section="sales"
+        :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
+      ></navbar-vue>
+    </div>
     <div class="results">
       <duration-form
         style="margin-left: 20vw"
@@ -20,7 +22,7 @@
 </template>
 
 <script>
-  import NavbarVue from "../ui/NavbarVue.vue";
+  import NavbarVue from "../ui/Navbar.vue";
   import SalesSummary from "./SalesSummary.vue";
   import DurationForm from "../ui/DurationForm.vue";
 

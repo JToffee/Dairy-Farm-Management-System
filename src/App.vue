@@ -149,10 +149,6 @@
     color: #000;
     background-color: var(--white);
   }
-  .form-group {
-    font-size: 1.7rem;
-    /* background-color: var(--color--bcg-1); */
-  }
   button {
     width: 12vw;
     padding: 0.7vw;
@@ -166,6 +162,25 @@
   }
   .form-group button:hover {
     background-color: var(--primary400);
+  }
+
+  .custom-period {
+    min-height: 80vh;
+  }
+  .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 4vh;
+  }
+  /* .dropdown {
+  /* margin-right: -3vw; */
+  .navbar {
+    flex-basis: 30%;
+  }
+  .dropdown {
+    margin-top: 0;
+    margin-right: -2.2vw;
   }
 
   .icon {

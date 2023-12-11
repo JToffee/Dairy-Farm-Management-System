@@ -1,9 +1,11 @@
 <template>
   <div>
-    <navbar-vue
-      section="produce"
-      :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
-    ></navbar-vue>
+    <div class="menu">
+      <navbar-vue
+        section="produce"
+        :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
+      ></navbar-vue>
+    </div>
     <prod-summary
       v-if="this.startDate && this.endDate"
       :period="this.days"
@@ -13,7 +15,7 @@
 
 <script>
   import ProdSummary from "./ProdSummary.vue";
-  import NavbarVue from "../ui/NavbarVue.vue";
+  import NavbarVue from "../ui/Navbar.vue";
   import { TOMILLISECS } from "../../util/config.js";
 
   export default {

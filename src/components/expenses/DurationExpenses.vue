@@ -3,38 +3,61 @@
     <div class="menu">
       <dropdown-vue class="dropdown" :links="this.months">Month</dropdown-vue>
       <navbar-vue
-        section="feeds"
+        section="expenses"
         :links="['new', 'today', 'choose period']"
         class="navbar"
       >
       </navbar-vue>
     </div>
-    <expense-summary></expense-summary>
+    <expense-summary-vue
+      v-if="this.startDate && this.endDate"
+      :period="this.days"
+    ></expense-summary-vue>
   </div>
 </template>
 
 <script>
-  import { allMonths } from "../../util/helpers.js";
+  // import { allMonths } from "../../util/helpers.js";
   import DropdownVue from "../ui/DropdownVue.vue";
-  import NavbarVue from "../ui/NavbarVue.vue";
-  import ExpenseSummary from "./ExpenseSummary.vue";
+  import NavbarVue from "../ui/Navbar.vue";
+  import ExpenseSummaryVue from "./ExpenseSummary.vue";
+  import { TOMILLISECS } from "../../util/config.js";
 
   export default {
     name: "DurationExpenses",
-    components: { DropdownVue, NavbarVue, ExpenseSummary },
-    props: { month: String, index: String },
+    components: { DropdownVue, NavbarVue, ExpenseSummaryVue },
+    // props: { month: String, index: String },
+    props: { duration: Number },
+    data() {
+      return {
+        startDate: null,
+        endDate: new Date(new Date().setHours(0, 0, 0, 0)),
+      };
+    },
     computed: {
-      // days() {
-      //   return (
-      //     new Date(this.endDate).getDate() -
-      //     new Date(this.startDate).getDate() +
-      //     1
-      //   );
-      // },
-      months() {
-        return allMonths();
+      days() {
+        return this.duration;
       },
     },
+    created() {
+      this.setStartDate();
+      this.$store.dispatch("setStartDate", this.startDate);
+      this.$store.dispatch("setEndDate", this.endDate);
+    },
+    updated() {
+      this.setStartDate();
+      this.$store.dispatch("setStartDate", this.startDate);
+      this.$store.dispatch("setEndDate", this.endDate);
+    },
+    methods: {
+      //set Start date
+      setStartDate() {
+        const milliseconds = this.days * TOMILLISECS;
+        this.startDate =
+          new Date(new Date().setHours(0, 0, 0, 0)).getTime() - milliseconds;
+      },
+    },
+    mounted() {},
   };
 </script>
 
@@ -45,8 +68,9 @@
     justify-content: flex-end;
     margin-top: 4vh;
   }
-  /* .dropdown {
-  /* margin-right: -3vw; */
+  .dropdown {
+    margin-right: -3vw;
+  }
   .navbar {
     flex-basis: 30%;
   }

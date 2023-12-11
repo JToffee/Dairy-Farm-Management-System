@@ -1,15 +1,17 @@
 <template>
   <div>
-    <navbar-vue
-      section="sales"
-      :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
-    ></navbar-vue>
+    <div class="menu">
+      <navbar-vue
+        section="sales"
+        :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
+      ></navbar-vue>
+    </div>
     <sales-summary :period="this.days"></sales-summary>
   </div>
 </template>
 
 <script>
-  import NavbarVue from "../ui/NavbarVue.vue";
+  import NavbarVue from "../ui/Navbar.vue";
   import SalesSummary from "./SalesSummary.vue";
   import { TOMILLISECS } from "../../util/config.js";
 

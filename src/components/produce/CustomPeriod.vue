@@ -1,9 +1,11 @@
 <template>
   <div class="custom-period">
-    <navbar-vue
-      section="produce"
-      :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
-    ></navbar-vue>
+    <div class="menu">
+      <navbar-vue
+        section="produce"
+        :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
+      ></navbar-vue>
+    </div>
     <div class="results">
       <duration-form
         @submitHandler="search"
@@ -11,16 +13,14 @@
         class="search"
       ></duration-form>
 
-      <ProdSummary
-        v-if="clicked && this.startDate && this.endDate"
-      ></ProdSummary>
+      <ProdSummary v-if="clicked && this.startDate && this.endDate"></ProdSummary>
     </div>
   </div>
 </template>
 
 <script>
   import ProdSummary from "./ProdSummary.vue";
-  import NavbarVue from "../ui/NavbarVue.vue";
+  import NavbarVue from "../ui/Navbar.vue";
   import DurationForm from "../ui/DurationForm.vue";
 
   export default {

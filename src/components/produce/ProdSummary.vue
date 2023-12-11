@@ -173,12 +173,18 @@
         return (
           data &&
           data.filter(
-            (item) => item.time === time && item.date >= startDate && item.date <= endDate
+            (item) =>
+              item.time === time &&
+              item.date >= startDate &&
+              item.date <= endDate
           )
         );
       },
       getDateTimeData(time, data, date) {
-        return data && data.filter((item) => item.time === time && item.date === date);
+        return (
+          data &&
+          data.filter((item) => item.time === time && item.date === date)
+        );
       },
 
       // filter produce by dates and milking time
@@ -200,7 +206,9 @@
       //PER COW PRODUCE
       cowBtnHandler(e) {
         e.preventDefault();
-        e.target.parentNode.querySelector(".btn-active")?.classList.remove("btn-active");
+        e.target.parentNode
+          .querySelector(".btn-active")
+          ?.classList.remove("btn-active");
 
         this.cowProduce = this.$store.getters.getCowProduce(e.target.id);
         e.target.classList.add("btn-active");
@@ -219,11 +227,14 @@
           //previous data
 
           prevDate =
-            new Date(new Date().setHours(0, 0, 0, 0)).getTime() - 1 * TOMILLISECS;
+            new Date(new Date().setHours(0, 0, 0, 0)).getTime() -
+            1 * TOMILLISECS;
 
           prevData = sum(this.getDateTimeData(curTime, this.data, prevDate));
 
-          currData = sum(this.getDateTimeData(curTime, this.data, this.setStartDate()));
+          currData = sum(
+            this.getDateTimeData(curTime, this.data, this.setStartDate())
+          );
         } else {
           prevDate = this.startDate - this.days * TOMILLISECS;
 
@@ -237,7 +248,12 @@
           );
 
           prevData = sum(
-            this.getDurationTimeData(curTime, this.data, prevDate, this.startDate)
+            this.getDurationTimeData(
+              curTime,
+              this.data,
+              prevDate,
+              this.startDate
+            )
           );
         }
 
@@ -259,13 +275,16 @@
           //previous data
 
           prevDate =
-            new Date(new Date().setHours(0, 0, 0, 0)).getTime() - 1 * TOMILLISECS;
+            new Date(new Date().setHours(0, 0, 0, 0)).getTime() -
+            1 * TOMILLISECS;
 
           prevData = sum(this.data.filter((item) => item.date === prevDate));
 
           //current data
           // currDate = this._setStartDate();
-          currData = sum(this.data.filter((item) => item.date === this.setStartDate()));
+          currData = sum(
+            this.data.filter((item) => item.date === this.setStartDate())
+          );
         } else {
           currData = sum(this.durationData());
 

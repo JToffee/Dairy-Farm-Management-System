@@ -1,16 +1,60 @@
 import HomePage from "../components/HomePage.vue";
+
+//PRODUCE
 import DurationProduce from "../components/produce/DurationProduce.vue";
 import ProdInput from "../components/produce/ProdInput.vue";
 import CustomPeriod from "../components/produce/CustomPeriod.vue";
+
+//SALES
 import DurationSales from "../components/sales/DurationSales.vue";
 import SalesPeriod from "../components/sales/CustomPeriod.vue";
 import InputSale from "../components/sales/InputSale.vue";
+
+//FEEDS
 import DurationFeeds from "../components/feeds/DurationFeeds.vue";
 import InputFeed from "../components/feeds/InputFeed.vue";
 import FeedsPeriod from "../components/feeds/CustomPeriod.vue";
+
+// EXPENSES
 import DurationExpenses from "../components/expenses/DurationExpenses.vue";
+import ExpenseInput from "../components/expenses/ExpenseInput.vue";
+import ExpensesPeriod from "../components/expenses/CustomPeriod.vue";
 
 export const routes = [
+  //EXPENSES
+  {
+    path: "/expenses",
+    name: "expenses",
+    component: DurationExpenses,
+    props: { duration: 0 },
+  },
+  {
+    path: "/expenses/new",
+    name: "expensesnew",
+    component: ExpenseInput,
+  },
+  {
+    path: "/expenses/today",
+    name: "expensestoday",
+    component: DurationExpenses,
+    props: { duration: 0 },
+  },
+  {
+    path: "/expenses/chooseperiod",
+    name: "expenseschooseperiod",
+    component: ExpensesPeriod,
+  },
+  {
+    path: "/:any/expenses",
+    redirect: "/expenses",
+  },
+
+  // {
+  //   path: "/expenses",
+  //   name: "expenses",
+  //   component:
+  // }
+
   //HOMEPAGE
 
   {
@@ -158,21 +202,13 @@ export const routes = [
     name: "feedschooseperiod",
     component: FeedsPeriod,
   },
-
-  //EXPENSES
-  {
-    path: "/expenses",
-    name: "expenses",
-    component: DurationExpenses,
-  },
 ];
 
-  // {
-  // 	path: "/about",
-  // 	name: "About",
-  // 	// route level code-splitting
-  // 	// this generates a separate chunk (about.[hash].js) for this route
-  // 	// which is lazy-loaded when the route is visited.
-  // 	component: About,
-  // },
-
+// {
+// 	path: "/about",
+// 	name: "About",
+// 	// route level code-splitting
+// 	// this generates a separate chunk (about.[hash].js) for this route
+// 	// which is lazy-loaded when the route is visited.
+// 	component: About,
+// },

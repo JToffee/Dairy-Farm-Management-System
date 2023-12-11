@@ -8,8 +8,8 @@
         class="navbar"
       ></navbar-vue>
     </div>
-    <div id="forms-input">
-      <form id="input-form" @submit="addFeed">
+    <div class="forms-input">
+      <form @submit="addFeed">
         <h2>In<span>put fee</span>d</h2>
         <div class="form-group">
           <label for="date">Date</label>
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-  import NavbarVue from "../ui/NavbarVue.vue";
+  import NavbarVue from "../ui/Navbar.vue";
   import DropdownVue from "../ui/DropdownVue.vue";
   import { allMonths } from "../../util/helpers.js";
 
@@ -113,103 +113,66 @@
 </script>
 
 <style scoped>
-  form {
-    background-color: var(--primary600);
-    padding-bottom: 5vh;
-    width: 80vw;
-  }
-  #forms-input {
+  .forms-input {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     min-height: 50vh;
-    justify-content: center;
-    margin-top: 20vh;
+    margin: auto;
+    margin-top: 10vh;
+    width: 90%;
   }
-  #input-form {
-    background-color: var(--primary700);
-
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--white);
     padding-top: 5vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin: auto;
+    width: 100%;
+    padding: 0;
+    margin-right: 0;
+    padding-bottom: 5vh;
   }
   .form-group {
-    min-height: 5vh;
-    flex-basis: 40%;
-    margin: 1vw;
-    overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1vw;
-    /* background: #ddd; */
+    flex-basis: 45%;
   }
-  .form-group label {
-    flex-basis: 100%;
-    color: #d8dde0;
-    padding: 1vw;
-    float: left;
-    margin-top: -1vh;
-    font-size: 1.3rem;
-  }
-  .form-group input {
-    height: 7vh;
-    font-size: 1rem;
-    text-indent: 1vw;
-    color: #464541;
-    background-color: var(--white);
-    flex-basis: 80%;
-  }
-  .form-group select {
-    flex-basis: 80%;
-    height: 8vh;
-    font-size: 1rem;
-    text-indent: 1vw;
-    color: #464541;
-    background-color: var(--white);
-  }
-  .form-group {
-    font-size: 1.7rem;
-    /* background-color: var(--color--bcg-1); */
-  }
-  button {
-    width: 12vw;
-    padding: 0.7vw;
-    font-size: 1rem;
-    margin-left: 30%;
-    background-color: var(--primary400);
-    color: var(--white);
-    border: none;
-    /* border: 1px solid var(--accent400); */
-    border-radius: 1vw;
-  }
-  .form-group button:hover {
-    background-color: var(--accent400);
-  }
-
-  #forms-input h2 span {
-    padding-bottom: 2vh;
-    border-bottom: 5px solid var(--primary300);
-  }
-
-  #forms-input h2 {
+  .forms-input h2 {
     margin-bottom: 8vh;
-    margin-left: 30%;
     font-size: 3vw;
     flex-basis: 100%;
-    color: #d8dde0;
+    margin-left: 0;
+    color: #000;
+    text-align: center;
+  }
+  .forms-input h2 span {
+    padding-bottom: 2vh;
+    border-bottom: 5px solid var(--primary500);
+  }
+  .form-group label {
+    width: 13vw;
+  }
+  .form-group input {
+    height: 5vh;
+    width: 20vw;
+  }
+  button {
+    font-size: 1rem;
+    margin-left: 43%;
   }
   .menu {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-top: 0;
+    margin-top: 4vh;
   }
   /* .dropdown {
-    /* margin-right: -3vw; */
+  /* margin-right: -3vw; */
   .navbar {
     flex-basis: 30%;
   }
   .dropdown {
-    margin-right: -2vw;
+    margin-top: 0;
+    margin-right: -2.2vw;
   }
 </style>

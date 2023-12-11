@@ -15,7 +15,7 @@
 
 <script>
   import DropdownVue from "../ui/DropdownVue.vue";
-  import NavbarVue from "../ui/NavbarVue.vue";
+  import NavbarVue from "../ui/Navbar.vue";
   import FeedsSummary from "./FeedsSummary.vue";
   import { allMonths } from "../../util/helpers.js";
   // import { TOMILLISECS } from "../../util/config.js";
@@ -33,7 +33,11 @@
     },
     computed: {
       days() {
-        return new Date(this.endDate).getDate() - new Date(this.startDate).getDate() + 1;
+        return (
+          new Date(this.endDate).getDate() -
+          new Date(this.startDate).getDate() +
+          1
+        );
       },
       months() {
         return allMonths();
@@ -56,7 +60,12 @@
       setStartDate() {
         if (this.index) {
           this.startDate = new Date(
-            new Date(new Date().getFullYear(), +this.index, 1).setHours(0, 0, 0, 0)
+            new Date(new Date().getFullYear(), +this.index, 1).setHours(
+              0,
+              0,
+              0,
+              0
+            )
           ).getTime();
         }
       },
@@ -65,7 +74,12 @@
       setEndDate() {
         if (this.index) {
           this.endDate = new Date(
-            new Date(new Date().getFullYear(), +this.index + 1, 0).setHours(0, 0, 0, 0)
+            new Date(new Date().getFullYear(), +this.index + 1, 0).setHours(
+              0,
+              0,
+              0,
+              0
+            )
           ).getTime();
         }
       },

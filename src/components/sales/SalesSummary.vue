@@ -100,11 +100,10 @@
             <td>{{ totalAmount }}</td>
             <td>{{ amountDiff }}</td>
           </tr>
-          <tr></tr>
           <tr class="net">
             <td class="category">Net total</td>
-            <td>{{ netMilk }}</td>
-            <td>{{ netAmount }}</td>
+            <td>{{ netMilk }} Litres</td>
+            <td>KES {{ netAmount }}</td>
             <td>_</td>
           </tr>
         </tbody>
@@ -143,7 +142,8 @@
         return Intl.NumberFormat("en-GB").format(sum(this.durationData()));
       },
       netMilk() {
-        const milk = sum(this.durationData()) - sum(this.durationCatData("unsold"));
+        const milk =
+          sum(this.durationData()) - sum(this.durationCatData("unsold"));
 
         return Intl.NumberFormat("en-GB").format(milk);
       },
@@ -153,7 +153,8 @@
       },
       netAmount() {
         const amount =
-          sumSale(this.durationData()) - sumSale(this.durationCatData("unsold"));
+          sumSale(this.durationData()) -
+          sumSale(this.durationCatData("unsold"));
 
         return Intl.NumberFormat("en-GB").format(amount);
       },
@@ -167,26 +168,36 @@
       // 	return 5;
       // },
       kccMilk() {
-        return Intl.NumberFormat("en-GB").format(sum(this.durationCatData("KCC")));
+        return Intl.NumberFormat("en-GB").format(
+          sum(this.durationCatData("KCC"))
+        );
       },
       kccAmount() {
-        return Intl.NumberFormat("en-GB").format(sumSale(this.durationCatData("KCC")));
+        return Intl.NumberFormat("en-GB").format(
+          sumSale(this.durationCatData("KCC"))
+        );
       },
       kccDiff() {
         return this.differenceByCat("KCC");
       },
 
       retailMilk() {
-        return Intl.NumberFormat("en-GB").format(sum(this.durationCatData("retail")));
+        return Intl.NumberFormat("en-GB").format(
+          sum(this.durationCatData("retail"))
+        );
       },
       retailAmount() {
-        return Intl.NumberFormat("en-GB").format(sumSale(this.durationCatData("retail")));
+        return Intl.NumberFormat("en-GB").format(
+          sumSale(this.durationCatData("retail"))
+        );
       },
       retailDiff() {
         return this.differenceByCat("retail");
       },
       wholesaleMilk() {
-        return Intl.NumberFormat("en-GB").format(sum(this.durationCatData("wholesale")));
+        return Intl.NumberFormat("en-GB").format(
+          sum(this.durationCatData("wholesale"))
+        );
       },
       wholesaleAmount() {
         return Intl.NumberFormat("en-GB").format(
@@ -197,7 +208,9 @@
         return this.differenceByCat("wholesale");
       },
       prepaidMilk() {
-        return Intl.NumberFormat("en-GB").format(sum(this.durationCatData("prepaid")));
+        return Intl.NumberFormat("en-GB").format(
+          sum(this.durationCatData("prepaid"))
+        );
       },
       prepaidAmount() {
         return Intl.NumberFormat("en-GB").format(
@@ -208,19 +221,27 @@
         return this.differenceByCat("prepaid");
       },
       billedMilk() {
-        return Intl.NumberFormat("en-GB").format(sum(this.durationCatData("billed")));
+        return Intl.NumberFormat("en-GB").format(
+          sum(this.durationCatData("billed"))
+        );
       },
       billedAmount() {
-        return Intl.NumberFormat("en-GB").format(sumSale(this.durationCatData("billed")));
+        return Intl.NumberFormat("en-GB").format(
+          sumSale(this.durationCatData("billed"))
+        );
       },
       billedDiff() {
         return this.differenceByCat("billed");
       },
       unsoldMilk() {
-        return Intl.NumberFormat("en-GB").format(sum(this.durationCatData("unsold")));
+        return Intl.NumberFormat("en-GB").format(
+          sum(this.durationCatData("unsold"))
+        );
       },
       unsoldAmount() {
-        return Intl.NumberFormat("en-GB").format(sumSale(this.durationCatData("unsold")));
+        return Intl.NumberFormat("en-GB").format(
+          sumSale(this.durationCatData("unsold"))
+        );
       },
       unsoldDiff() {
         return this.differenceByCat("unsold");
@@ -250,7 +271,10 @@
       // specific date data
       dateCatData(category, data, date) {
         return (
-          data && data.filter((item) => item.category === category && item.date === date)
+          data &&
+          data.filter(
+            (item) => item.category === category && item.date === date
+          )
         );
       },
       //filter by category helper
@@ -260,7 +284,9 @@
           data &&
           data.filter((item) => {
             return (
-              item.category === category && item.date <= endDate && item.date >= startDate
+              item.category === category &&
+              item.date <= endDate &&
+              item.date >= startDate
             );
           })
         );
@@ -297,24 +323,33 @@
           //previous data
           console.log(this.days);
           prevDate =
-            new Date(new Date().setHours(0, 0, 0, 0)).getTime() - 1 * TOMILLISECS;
+            new Date(new Date().setHours(0, 0, 0, 0)).getTime() -
+            1 * TOMILLISECS;
 
           console.log(
             new Date(
-              new Date(new Date().setHours(0, 0, 0, 0)).getTime() - 1 * TOMILLISECS
+              new Date(new Date().setHours(0, 0, 0, 0)).getTime() -
+                1 * TOMILLISECS
             ).toLocaleDateString()
           );
           prevData = sumSale(this.dateCatData(cat, this.data, prevDate));
 
           console.log(prevData);
 
-          currData = sumSale(this.dateCatData(cat, this.data, this.setStartDate()));
+          currData = sumSale(
+            this.dateCatData(cat, this.data, this.setStartDate())
+          );
           console.log(currData);
         } else {
           prevDate = this.startDate - this.days * TOMILLISECS;
           console.log(this.days);
           currData = sumSale(
-            this.getDurationCatData(cat, this.data, this.startDate, this.setStartDate())
+            this.getDurationCatData(
+              cat,
+              this.data,
+              this.startDate,
+              this.setStartDate()
+            )
           );
 
           prevData = sumSale(
@@ -342,9 +377,12 @@
           //previous data
 
           prevDate =
-            new Date(new Date().setHours(0, 0, 0, 0)).getTime() - 1 * TOMILLISECS;
+            new Date(new Date().setHours(0, 0, 0, 0)).getTime() -
+            1 * TOMILLISECS;
 
-          prevData = sumSale(this.data.filter((item) => item.date === prevDate));
+          prevData = sumSale(
+            this.data.filter((item) => item.date === prevDate)
+          );
 
           currData = sumSale(
             this.data.filter((item) => item.date === this.setStartDate())
@@ -408,12 +446,13 @@
     padding: 2vh;
     /* background-color: var(--primary600); */
   }
-  tbody tr:nth-child(even) {
+  tbody tr:nth-child(odd) {
     background-color: var(--lightSteelBlue);
   }
   .category {
     font-weight: bold;
-    color: var(--primary600);
+    /* color: var(--primary600); */
+    color: var(--black);
     text-align: left;
     text-indent: 2vw;
   }

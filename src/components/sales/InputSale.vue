@@ -1,9 +1,11 @@
 <template>
   <div>
-    <navbar-vue
-      section="sales"
-      :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
-    ></navbar-vue>
+    <div class="menu">
+      <navbar-vue
+        section="sales"
+        :links="['new', 'today', 'Past week', 'Past month', 'Choose period']"
+      ></navbar-vue>
+    </div>
     <div class="forms-input">
       <form @submit="addSale">
         <h2>In<span>put Sal</span>e</h2>
@@ -40,7 +42,7 @@
 </template>
 
 <script>
-  import NavbarVue from "../ui/NavbarVue.vue";
+  import NavbarVue from "../ui/Navbar.vue";
 
   import { saleCategories } from "../../util/config";
   export default {

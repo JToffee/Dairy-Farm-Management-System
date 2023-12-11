@@ -11,7 +11,7 @@
         <th class="category-th">Type</th>
         <th>Quantity</th>
         <th>Cost (KSH)</th>
-        <th>Avg Unit price</th>
+        <th>Avg Unit price (Per KG)</th>
         <th>Difference (Qty)</th>
         <tbody v-if="this.filteredData.length > 0">
           <tr v-for="feed in filteredData" :key="feed.id">
@@ -28,10 +28,10 @@
 
           <tr class="net">
             <td class="category">Total</td>
-            <td>{{ this.totalQty }}</td>
-            <td>{{ this.totalCost }}</td>
-            <td>{{ this.avgUnitPrice }}</td>
-            <td>{{ this.difference(null) }}</td>
+            <td>{{ this.totalQty }} KG</td>
+            <td>KES {{ this.totalCost }}</td>
+            <td>KES {{ this.avgUnitPrice }}</td>
+            <td>{{ this.difference(null) }} KG</td>
           </tr>
           <!-- <tr>
             <td class="category">Wheat</td>
@@ -109,14 +109,20 @@
         return this.$store.state.produce.endDate;
       },
       totalQty() {
-        return Intl.NumberFormat("en-GB").format(sumFeedsQty(this.durationData()));
+        return Intl.NumberFormat("en-GB").format(
+          sumFeedsQty(this.durationData())
+        );
       },
       totalCost() {
-        return Intl.NumberFormat("en-GB").format(sumFeedsCost(this.durationData()));
+        return Intl.NumberFormat("en-GB").format(
+          sumFeedsCost(this.durationData())
+        );
       },
       avgUnitPrice() {
         return Intl.NumberFormat("en-GB").format(
-          (sumFeedsCost(this.feeds) / sumFeedsQty(this.durationData())).toFixed(2)
+          (sumFeedsCost(this.feeds) / sumFeedsQty(this.durationData())).toFixed(
+            2
+          )
         );
       },
       filteredData() {
@@ -193,13 +199,16 @@
             prevData = sumFeedsQty(
               this.feeds.filter(
                 (feed) =>
-                  feed.date === this.startDate - 1 * TOMILLISECS && feed.name === feedName
+                  feed.date === this.startDate - 1 * TOMILLISECS &&
+                  feed.name === feedName
               )
             );
           } else {
             //DIFFERENCE FOR TOTAL FEEDS
             prevData = sumFeedsQty(
-              this.feeds.filter((feed) => feed.date === this.startDate - 1 * TOMILLISECS)
+              this.feeds.filter(
+                (feed) => feed.date === this.startDate - 1 * TOMILLISECS
+              )
             );
           }
         }
@@ -259,7 +268,10 @@
     /* background-color: var(--primary600); */
   }
   tbody tr:nth-child(odd) {
-    background-color: burlywood;
+    /* background-color: burlywood; */
+
+    background-color: var(--lightSteelBlue);
+
     /* 7a541a */
   }
 
@@ -270,17 +282,21 @@
     text-indent: 2vw;
   }
   .net {
-    background-color: #7a4d1a;
+    /* background-color: #7a4d1a; */
+    background-color: var(--primary700);
   }
   .net .category {
-    color: #e9dede;
+    /* color: #e9dede; */
+    color: var(--color-background);
   }
   .category-th {
     text-align: left;
     text-indent: 2vw;
   }
   .net td {
-    color: #e9dede;
+    /* color: #e9dede; */
+    color: var(--color-background);
+
     font-weight: 600;
   }
 </style>

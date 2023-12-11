@@ -23,7 +23,7 @@
 <script>
   import FeedsSummary from "./FeedsSummary.vue";
   import DurationForm from "../ui/DurationForm.vue";
-  import NavbarVue from "../ui/NavbarVue.vue";
+  import NavbarVue from "../ui/Navbar.vue";
   import { allMonths } from "../../util/helpers.js";
   import DropdownVue from "../ui/DropdownVue.vue";
 
