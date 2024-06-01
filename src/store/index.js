@@ -14,6 +14,7 @@ export default createStore({
       time: new Date().getHours(),
       startDate: "",
       endDate: "",
+      isExpanded: localStorage.getItem("is_expanded") === "true"
     },
     cows: cows,
     sales: {
@@ -28,6 +29,10 @@ export default createStore({
     getCows: (state) => {
       return state.cows;
     },
+    getIsExpanded: (state) =>
+      {
+        return state.isExpanded
+      },
     getHour: (state) => {
       if (state.produce.time > 14) return "evening";
       if (state.produce.time > 9) return "noon";
@@ -88,6 +93,12 @@ export default createStore({
         )
       );
     },
+    setIsExpanded(state){
+      state.isExpanded = !state.isExpanded
+      localStorage.setItem("is_expanded", state.isExpanded)
+      console.log(state.isExpanded)
+
+    }
   },
   actions: {
     //PRODUCE
@@ -109,6 +120,9 @@ export default createStore({
     addFeed({ commit }, formData) {
       commit("addFeed", formData);
     },
+    setIsExpanded({commit}, isExpanded){
+      commit("setIsExpanded",isExpanded)
+    }
   },
   modules: {},
 });

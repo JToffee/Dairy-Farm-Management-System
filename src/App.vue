@@ -1,21 +1,24 @@
 <template>
-  <router-view></router-view>
-  <Footer></Footer>
+<sidebar-vue>
+
+</sidebar-vue>
+  <router-view class="container" :class="`${isExpanded ?'is-expanded-main' : ''}`"></router-view>
+  <!-- <footer-vue></footer-vue> -->
 </template>
 
 <script>
-  import Footer from "./components/ui/FooterVue.vue";
+import SidebarVue from './components/SidebarVue.vue';
+// import FooterVue from './views/ui/FooterVue.vue';
   export default {
     name: "App",
-    components: { Footer },
-    data: () => ({
-      //
-    }),
-
+    components: { SidebarVue},
     computed: {
       counter() {
         return this.$store.state.counter;
       },
+      isExpanded() {
+        return this.$store.state.isExpanded;
+      }
     },
     methods: {
       increment() {
@@ -25,18 +28,25 @@
         this.$store.dispatch("decrement");
       },
     },
+
   };
 </script>
-<style>
+<style lang="scss">
   :root {
-    --color-background: #f5fbfc;
+
+    /* COLOURS*/
+
+    --color-background: #e5f2f9;
+    /* --color-background: #f5fbfc;*/
     --primary200: #99b6ce;
-    --primary300: #30def5;
-    --primary500: #1f9bb1;
-    --primary400: #2a8ddd;
-    --primary600: #133b5c;
-    --primary800: #092841;
-    --primary700: #06424b;
+    --primary300: #59d5e8;;
+    --primary400: #2aa1b3;
+    --primary500: #117382;
+    --primary600: #06424b;
+    --primary700: #043239;
+    --primary800: #02191c;
+
+    
     /* --accent200: #e5c7b1; */
     --accent200: #b6594c;
     --accent300: #db3f4c;
@@ -50,30 +60,52 @@
     --lightSteelBlue: #b0c4de;
     --borderGrey: #d4d0d0;
     --shadow-grey: #c1c8ce;
-  }
 
-  html {
-    scroll-behavior: smooth;
+    /* DIMENSIONS */
+    --sidebar-width: 300px
   }
+  ::-webkit-scrollbar {
+  display: none;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Fira sans', sans-serif;
+  scroll-behavior: smooth;
+}
   #app {
     background-color: var(--color-background);
     scroll-behavior: smooth;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
-      Arial, sans-serif;
+    font-family: "Fira Sans", sans-serif;
     overflow-x: hidden;
-  }
+    display: flex;
+
+    .container {
+      flex: 1 1 0;
+      padding: 0;
+      font-family: "Fira Sans", sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 1rem;     
+      margin-left: 100px;
+      position: relative
+
+    }
+    .is-expanded-main{
+      width: 800px;
+      overflow: hidden;
+    }
+		@media (max-width: 1024px) {
+			padding-left: 6rem;
+		
+	}
+}
   body {
     background-color: var(--color-background);
     scroll-behavior: smooth;
     margin: 0;
-  }
-
-  .container {
-    font-family: "Roboto", sans-serif;
-    overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 1.5vw;
   }
   .thumbnails-container {
     width: 80vw;

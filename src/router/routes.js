@@ -1,24 +1,24 @@
-import HomePage from "../components/HomePage.vue";
+import HomePage from "../views/HomePage.vue";
 
 //PRODUCE
-import DurationProduce from "../components/produce/DurationProduce.vue";
-import ProdInput from "../components/produce/ProdInput.vue";
-import CustomPeriod from "../components/produce/CustomPeriod.vue";
+import DurationProduce from "../views/produce/DurationProduce.vue";
+import ProdInput from "../views/produce/ProdInput.vue";
+import CustomPeriod from "../views/produce/CustomPeriod.vue";
 
 //SALES
-import DurationSales from "../components/sales/DurationSales.vue";
-import SalesPeriod from "../components/sales/CustomPeriod.vue";
-import InputSale from "../components/sales/InputSale.vue";
+import DurationSales from "../views/sales/DurationSales.vue";
+import SalesPeriod from "../views/sales/CustomPeriod.vue";
+import InputSale from "../views/sales/InputSale.vue";
 
 //FEEDS
-import DurationFeeds from "../components/feeds/DurationFeeds.vue";
-import InputFeed from "../components/feeds/InputFeed.vue";
-import FeedsPeriod from "../components/feeds/CustomPeriod.vue";
+import DurationFeeds from "../views/feeds/DurationFeeds.vue";
+import InputFeed from "../views/feeds/InputFeed.vue";
+import FeedsPeriod from "../views/feeds/CustomPeriod.vue";
 
 // EXPENSES
-import DurationExpenses from "../components/expenses/DurationExpenses.vue";
-import ExpenseInput from "../components/expenses/ExpenseInput.vue";
-import ExpensesPeriod from "../components/expenses/CustomPeriod.vue";
+import DurationExpenses from "../views/expenses/DurationExpenses.vue";
+import ExpenseInput from "../views/expenses/ExpenseInput.vue";
+import ExpensesPeriod from "../views/expenses/CustomPeriod.vue";
 
 export const routes = [
   //EXPENSES
